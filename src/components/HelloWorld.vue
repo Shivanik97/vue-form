@@ -120,10 +120,8 @@ const formData = ref<FormData>({
 async function submitForm() {
   try {
     const { name, email, phone, address, workExperience, status } = formData.value
-    console.log(formData.value)
     const data = { name, email, phone, address, workExperience, status }
     const response = await axios.post('https://shravanariqtportaldemo-web-dev.azurewebsites.net/api/Candidate', data)
-    console.log(response)
   }
   catch (error: any) {
     console.error(error)
