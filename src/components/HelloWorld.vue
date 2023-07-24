@@ -65,6 +65,9 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import axios from 'axios';
+import { useToast } from 'vue-toastification'
+
+const toast = useToast()
 
 interface Name {
   firstName: string;
@@ -122,14 +125,14 @@ async function submitForm() {
     const { name, email, phone, address, workExperience, status } = formData.value
     const data = { name, email, phone, address, workExperience, status }
     const response = await axios.post('https://shravanariqtportaldemo-web-dev.azurewebsites.net/api/Candidate', data)
+    toast.success('Registration successful!')
   }
   catch (error: any) {
-    console.error(error)
+    toast.error("Registration failed")
   }
 }
 </script>
 <style>
-/* Add additional styles in this block */
 label {
   display: block;
   margin-bottom: 10px;
